@@ -1,5 +1,3 @@
 DROP DATABASE IF EXISTS currentsee_db;
 CREATE DATABASE currentee_db;
 
-DROP DATABASE IF EXISTS testdb;
-CREATE DATABASE testdb;
