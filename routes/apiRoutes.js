@@ -1,24 +1,75 @@
 var db = require("../models");
-
 module.exports = function(app) {
   // Get all examples
-  app.get("/api/examples", function(req, res) {
-    db.Example.findAll({}).then(function(dbExamples) {
-      res.json(dbExamples);
+  app.get("/api/budget", function(req, res) {
+    db.Budget.findAll({}).then(function(budgetData) {
+      res.json(budgetData);
     });
   });
-
   // Create a new example
-  app.post("/api/examples", function(req, res) {
-    db.Example.create(req.body).then(function(dbExample) {
-      res.json(dbExample);
+  app.post("/api/budget", function(req, res) {
+    db.Budget.create(req.body).then(function(budgetData) {
+      res.json(budgetData);
+    });
+  });
+  // Delete an example by id
+  app.delete("/api/budget/:id", function(req, res) {
+    db.Budget.destroy({
+      where: {
+        id: req.params.id
+      }
+    }).then(function(budgetData) {
+      res.json(budgetData);
+    });
+  });
+  // Update an example by id
+  app.put("/api/budget/:id", function(req, res) {
+    db.Budget.update(req.body, {
+      where: {
+        id: req.params.id
+      }
+    }).then(function(budgetData) {
+      res.json(budgetData);
     });
   });
 
-  // Delete an example by id
-  app.delete("/api/examples/:id", function(req, res) {
-    db.Example.destroy({ where: { id: req.params.id } }).then(function(dbExample) {
-      res.json(dbExample);
+  app.get("/api/wishlist", function(req, res) {
+    db.Wishlist.findAll({}).then(function(wishlistData) {
+      res.json(wishlistData);
     });
   });
+  // Create a new example
+  app.post("/api/wishlist", function(req, res) {
+    db.Wishlist.create(req.body).then(function(wishlistData) {
+      res.json(wishlistData);
+    });
+  });
+  // Delete an example by id
+  app.delete("/api/wishlist/:id", function(req, res) {
+    db.Wishlist.destroy({
+      where: {
+        id: req.params.id
+      }
+    }).then(function(wishlistData) {
+      res.json(wishlistData);
+    });
+  });
+  // Update an example by id
+  app.put("/api/wishlist/:id", function(req, res) {
+    db.Wishlist.update(req.body, {
+      where: {
+        id: req.params.id
+      }
+    }).then(function(wishlistData) {
+      res.json(wishlistData);
+    });
+  });
+  //
+  app.get(
+    "/api/user",
+    passport.authenticate("basic", { session: false }),
+    function(req, res) {
+      res.json(req.user);
+    }
+  );
 };

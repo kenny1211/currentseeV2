@@ -19,14 +19,8 @@ passport.use(new LocalStrategy(
 
 //PROTECT ENDPOINTS 
 
-app.get('/api/me',
-passport.authenticate('basic', {session: false}),
-function(req, res) {
-  res.json(req.user);
-});
-
 //CONFIGURATION 
-passport.use(new DigegstStrategy({ qop: 'auth'},
+passport.use(new DigestStrategy({ qop: 'auth'},
 function(username, done) {
   User.findOne({ username: username}, function (err, user) {
     if (err) {return done(err);}
