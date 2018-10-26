@@ -2,7 +2,8 @@
   "development": {
     "username": "root",
     "password": "password",
-    "database": "curentsee_db",
+    
+    "database": "currentsee_db",
     "host": "localhost",
     "dialect": "mysql"
   },
