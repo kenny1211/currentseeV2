@@ -13,3 +13,14 @@ app.post('/login',
                                   failureRedirect: '/login',
                                   failureFlash: true})
 );
+
+app.get('/auth/google',
+  passport.authenticate('google', { score: "https://www.google.com/m8/feeds"}));
+
+  //CALL BACK FUNCTION 
+
+  app.get('/auth/google/callback',
+    passport.authenticate('google', {failureRedirect: '/login'}),
+    function(req, res) {
+      res.redirect("/"};
+    ));
