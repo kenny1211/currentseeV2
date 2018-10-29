@@ -1,5 +1,7 @@
 var db = require("../models");
-module.exports = function(app) {
+var authController = require('../controllers/authcontroller.js')
+
+module.exports = function(app, passport) {
   // Get all examples //BUDGET--------------------
   app.get("/api/budget", function(req, res) {
     db.Budget.findAll({}).then(function(budgetData) {
@@ -81,12 +83,43 @@ module.exports = function(app) {
       res.json(wishlistData);
     });
   });
-//   // USER ROUTE------------------------------
-//   app.get(
-//     "/api/user",
-//     passport.authenticate("basic", { session: false }),
-//     function(req, res) {
-//       res.json(req.user);
-//     }
-//   );
+
+  // USER ROUTE------------------------------
+  app.get(
+    "/api/user",
+    passport.authenticate("basic", { session: false }),
+    function(req, res) {
+      res.json(req.user);
+    }
+  );
+  app.get('/signup', authController.signup);
+
+  app.get('/signin', authController.signin);
+
+  app.post('/signup', passport.authenticate('local-signup', {
+    successRedirect: '/dashboard',
+    failureRedirect: '/signup'
+  }
+  
+  ));
+
+  app.get('/dashboard',isLoggedIn, authController.dashboard);
+
+  app.get('/logout', authController.logout);
+
+  app.post('/signin', passport.authenticate('local-signin', {
+    successRedirect: '/dashboard',
+    failureRedirect: '/signin'
+  }
+  ));
+
+
+  function isLoggedIn(req, res, next) {
+
+    if (req.isAuthenticated())
+
+      return next();
+
+      res.redirect('/signin');
+  }
 };
