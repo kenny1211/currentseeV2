@@ -19,8 +19,10 @@ passport.use(new LocalStrategy(
 
 //PROTECT ENDPOINTS 
 
+
+
 //CONFIGURATION 
-passport.use(new DigestStrategy({ qop: 'auth'},
+passport.use(new DigegstStrategy({ qop: 'auth'},
 function(username, done) {
   User.findOne({ username: username}, function (err, user) {
     if (err) {return done(err);}
