@@ -27,15 +27,8 @@ $.ajax({
   type:"GET",
   url: queryURL
 })
-  .then(function(response, eventsData) {
-
-var eventsData = JSON.stringify(response);
-
-    for (var i = 0; i < eventsData.length; i++) {};
-
-  
-
-  $("#display").append(eventsData);
+  .then(function(response) {
+    console.log(response);
 });
   </script>
 
