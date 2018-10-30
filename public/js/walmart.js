@@ -28,9 +28,9 @@ const printProducts = (productsArray) => {
       .html("$" + productsArray.items[i].salePrice) //product price
       .appendTo(productBody)
     // print product image
-    var image = $("<img>")
+   var image = $("<img>")
       .addClass("preview-image")
-    var imageSource = productsArray.items[i].imageEntities[0].mediumImage
+    var imageSource = productsArray.items[i].mediumImage
     image.attr({
         src: imageSource
       })
@@ -68,8 +68,8 @@ const printProducts = (productsArray) => {
 
 // ajax jquery pull
 $("#search-form").on("submit", function (event) {
-  $("#search-form").hide();
   event.preventDefault();
+  $('#walmart-modal').modal('show')
 
 
   var searchTerm = $("#search-term").val();
@@ -101,14 +101,3 @@ $("#search-form").on("submit", function (event) {
 
 });
 
-// click function
-$(document).on("click", ".table-button", function (event) {
-      event.preventDefault();
-      $("#product-results").empty();
-
-      $("#search-form").show();
-
-      var product = $(this).attr("data-name");
-      var price = $(this).attr("data-price");
-      var date = today;
-      var type = "expense";
