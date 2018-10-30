@@ -1,7 +1,162 @@
-<div class="jumbotron jumbotron-fluid">
+<div id="home">
+  <div class="background">
+    <br>
+    <br>
+    <h1 class="text-center text-light">Current$ee Dashboard</h1>
+    <br>
+    <br>
+  </div>
+  <div class="ticker ml-10 mr-10">
+    <div class="slider scrollbar scroll" id="news">
+    </div>
+    <br>
+    <br>
+  </div>
   <div class="container">
-    <h1 class="display-4">Current$ee Dashboard</h1>
-    <p class="lead">View your budget.</p>
+    <div class="row">
+      <div class="col-md-4 col-12 monthly">
+        <p>Monthly Savings:</p>
+        <p>Total Savings:</p>
+      </div>
+
+      <div class="col-md-8 col-12 categories">
+        <div class="card">
+          <div class="card-header">Categories
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-3 electronics">
+                <button type="button" class="btn btn-primary" id="electronics">Electronics</button>
+              </div>
+              <div class="col-md-3 electronics-amount">
+                2
+              </div>
+              <div class="col-md-3">
+                <button type="button" class="btn btn-success" id="grocery">Grocery</button>
+              </div>
+              <div class="col-md-3">
+                4
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-3">
+                <button type="button" class="btn btn-warning" id="cat3">Cat 3</button>
+              </div>
+              <div class="col-md-3">
+                2
+              </div>
+              <div class="col-md-3">
+                <button type="button" class="btn btn-danger" id="cat4">Cat 4</button>
+              </div>
+              <div class="col-md-3">
+                4
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-3">
+                <button type="button" class="btn btn-info" id="cat5">Cat 5</button>
+              </div>
+              <div class="col-md-3">
+                2
+              </div>
+              <div class="col-md-3">
+                <button type="button" class="btn btn-dark" id="cat6">Cat 6</button>
+              </div>
+              <div class="col-md-3">
+                4
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+    <br>
+    <div class="row">
+      <div class="col-md-4 modal-buttons">
+        <!-- Large modal -->
+        <button type="button" class="btn btn-primary chart-button" data-toggle="modal" data-target="">Show
+          Chart</button>
+
+        <div class="modal fade bd-example-modal-lg" id="chart-modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+          aria-hidden="true">
+          <div class="modal-dialog modal-lg">
+            <div class="modal-content" id="chart-content">
+              Chart data goes here
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 modal-buttons">
+        <!-- Large modal -->
+        <button type="button" class="btn btn-primary budget-button" data-toggle="modal" data-target="">Show
+          Budget</button>
+        <div class="modal fade bd-example-modal-lg" id="budget-modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+          aria-hidden="true">
+          <div class="modal-dialog modal-lg">
+            <div class="modal-content" id="budget-content">
+              Budget data goes here
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 modal-buttons">
+        <!-- Large modal -->
+        <button type="button" class="btn btn-primary wish-button" data-toggle="modal" data-target="">Show
+          Wishlist</button>
+
+        <div class="modal fade bd-example-modal-lg" id="wish-modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+          aria-hidden="true">
+          <div class="modal-dialog modal-lg">
+            <div class="modal-content" id="wishlist-data">
+              Wishlist data goes here
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="menu2"><br>
+      <div class="card-body">
+        <div id='walmart-table'>
+        </div>
+        <div class="card form-card">
+          <div class="card-header bg-light card-title">
+            Search for products on Walmart.com
+          </div>
+          <form id="search-form">
+            <div class="form">
+              <div class="form-group">
+                <label for="search-input">Description</label>
+                <input class="form-control" id="search-term" placeholder="Search for Products" type="text">
+              </div>
+            </div>
+            <button class="btn btn-primary float-right" id="search">Submit</button>
+          </form>
+          <div class="modal" id="walmart-modal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">Walmart Results</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body" id="product-results">
+                  <p>Awaiting Results...</p>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="/js/index1.js"></script>
+    <script src="/js/app.js"></script>
+    <script src="/js/walmart.js"></script>

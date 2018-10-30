@@ -17,6 +17,7 @@ app.use(express.json());
 app.use(express.static("public"));
 
 // Handlebars
+app.set('views', './views')
 app.engine(
   "handlebars",
   exphbs({
@@ -42,7 +43,11 @@ app.use(passport.session()); //persistent login sessions
 require("./routes/apiRoutes")(app, passport);
 require("./routes/htmlRoutes")(app, passport);
 
-var syncOptions = { force: false };
+
+//auth route
+
+
+var syncOptions = { force: true };
 
 // If running a test, set syncOptions.force to true
 // clearing the `testdb`
@@ -54,7 +59,6 @@ if (process.env.NODE_ENV === "test") {
 
 //loadpassport strategies
 
-require('./config/passport/passport.js')(passport,db.user);
 
 // Starting the server, syncing our models ------------------------------------/
 db.sequelize.sync(syncOptions).then(function() {
