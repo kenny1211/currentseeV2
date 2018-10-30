@@ -1,7 +1,7 @@
 module.exports = function(sequelize, DataTypes) {
   var Budget = sequelize.define("Budget", {
     description: DataTypes.STRING,
-    date: DataTypes.DATE,
+    date: DataTypes.STRING,
     amount: DataTypes.INTEGER,
     category: DataTypes.STRING,
     income: DataTypes.BOOLEAN,

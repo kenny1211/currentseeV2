@@ -11,17 +11,18 @@ module.exports = function(app, passport) {
       });
   });
   // Create a new example
-  app.post("/api/budget", function(req, res) {
-    db.Budget
-      .create(req.body)
-      .then(function(budgetData) {
-        res.json(budgetData);
-      });
-  });
+  // app.post("/api/budget", function(req, res) {
+  //   db.Budget
+  //     .create(req.body)
+  //     .then(function(budgetData) {
+  //       res.json(budgetData);
+  //     });
+  // });
 
   app.post("/api/budget", function(req, res) {
+    console.log(req.body);
     db.Budget
-      .bulkCreate(req.body)
+      .bulkCreate(req.body.data)
       .then(function(budgetData) {
         res.json(budgetData);
       }).catch = (err) => {

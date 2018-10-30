@@ -27,7 +27,7 @@ handleBudgetFormSubmit = () => {
 
 upsertBudget = (budgetData) => {
   $.post("/api/budget", budgetData)
-    .then(budgetData) ;
+    .then(budgetData);
 }
 
 createBudgetRow = (budgetData) => {
