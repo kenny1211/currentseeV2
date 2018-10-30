@@ -1,100 +1,125 @@
 var db = require("../models");
-module.exports = function(app) {
+module.exports = function (app) {
   // Get all examples //BUDGET--------------------
-  app.get("/api/budget", function(req, res) {
-    db.Budget.findAll({}).then(function(budgetData) {
+  app.get("/api/budget", function (req, res) {
+    db.Budget.findAll({}).then(function (budgetData) {
       res.json(budgetData);
+    }).catch(function (err) {
+      if (err) throw err;
     });
   });
   // Create a new example
-  app.post("/api/budget", function(req, res) {
-    db.Budget.create(req.body).then(function(budgetData) {
+  app.post("/api/budget", function (req, res) {
+    db.Budget.create(req.body).then(function (budgetData) {
       res.json(budgetData);
+    }).catch(function (err) {
+      if (err) throw err;
     });
   });
 
-  app.get("/api/wishlist", function(req, res) {
-    db.Wishlist.findAll({}).then(function(wishlistData) {
-      res.json(wishlistData);
+  // Create a new example with multiple inputs
+  app.post("/api/budget", function (req, res) {
+    db.Budget.bulkCreate(req.body).then(function (budgetData) {
+      res.json(budgetData).catch(function (err) {
+        if (err) throw err;
+      });
+    });
+  });
+
+  app.get("/api/wishlist", function (req, res) {
+    db.Wishlist.findAll({}).then(function (wishlistData) {
+      res.json(wishlistData).catch(function (err) {
+        if (err) throw err;
+      });
     });
   });
   // Create a new example
-  app.post("/api/wishlist", function(req, res) {
-    db.Wishlist.create(req.body).then(function(wishlistData) {
+  app.post("/api/wishlist", function (req, res) {
+    db.Wishlist.create(req.body).then(function (wishlistData) {
       res.json(wishlistData);
+    }).catch(function (err) {
+      if (err) throw err;
+    }).catch(function (err) {
+      if (err) throw err;
     });
   });
   // Delete an example by id
-  app.delete("/api/budget/:id", function(req, res) {
+  app.delete("/api/budget/:id", function (req, res) {
     db.Budget.destroy({
       where: {
         id: req.params.id
       }
-    }).then(function(budgetData) {
+    }).then(function (budgetData) {
       res.json(budgetData);
+    }).catch(function (err) {
+      if (err) throw err;
+    }).catch(function (err) {
+      if (err) throw err;
     });
   });
 
   // Update an example by id
-  app.put("/api/budget/:id", function(req, res) {
+  app.put("/api/budget/:id", function (req, res) {
     db.Budget.update(req.body, {
       where: {
         id: req.params.id
       }
-    }).then(function(budgetData) {
+    }).then(function (budgetData) {
       res.json(budgetData);
+    }).catch(function (err) {
+      if (err) throw err;
     });
   });
 
   // Get all examples //WISHLIST--------------------
-  app.get("/api/wishlist", function(req, res) {
-    db.Wishlist.findAll({}).then(function(wishlistData) {
+  app.get("/api/wishlist", function (req, res) {
+    db.Wishlist.findAll({}).then(function (wishlistData) {
       res.json(wishlistData);
+    }).catch(function (err) {
+      if (err) throw err;
     });
   });
 
   // Create a new example
-  app.post("/api/wishlist", function(req, res) {
-    db.Wishlist.create(req.body).then(function(wishlistData) {
+  app.post("/api/wishlist", function (req, res) {
+    db.Wishlist.create(req.body).then(function (wishlistData) {
       res.json(wishlistData);
+    }).catch(function (err) {
+      if (err) throw err;
     });
   });
 
   // Delete an example by id
-  app.delete("/api/wishlist/:id", function(req, res) {
+  app.delete("/api/wishlist/:id", function (req, res) {
     db.Wishlist.destroy({
       where: {
         id: req.params.id
       }
-    }).then(function(wishlistData) {
+    }).then(function (wishlistData) {
       res.json(wishlistData);
+    }).catch(function (err) {
+      if (err) throw err;
     });
   });
 
   // Update an example by id
-  app.put("/api/wishlist/:id", function(req, res) {
+  app.put("/api/wishlist/:id", function (req, res) {
     db.Wishlist.update(req.body, {
       where: {
         id: req.params.id
       }
-    }).then(function(wishlistData) {
+    }).then(function (wishlistData) {
       res.json(wishlistData);
+    }).catch(function (err) {
+      if (err) throw err;
     });
   });
 
   //newsticker
-  app.get("/api/news", function (req, res) {
-    db.news.create(req.body).then(function (newsData) {
-      res.json(newsData);
-    });
+  app.get("/api/main", function (req, res) {
+    // install request package
+    // query api for news
+    // in callback res.json returned data
   });
 
-//   // USER ROUTE------------------------------
-//   app.get(
-//     "/api/user",
-//     passport.authenticate("basic", { session: false }),
-//     function(req, res) {
-//       res.json(req.user);
-//     }
-//   );
 };
