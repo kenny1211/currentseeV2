@@ -4,9 +4,9 @@
 
       "username": "root",
 
-      "password": "password",
+      "password": "null",
 
-      "database": "sequelize_passport",
+      "database": "currentsee_db",
 
       "host": "127.0.0.1",
 
@@ -16,9 +16,9 @@
 
   "test": {
 
-      "username": "",
+      "username": "root",
 
-      "password": "password",
+      "password": "",
 
       "database": "",
 
@@ -30,9 +30,9 @@
 
   "production": {
 
-      "username": "",
+      "username": "root",
 
-      "password": null,
+      "password": "",
 
       "database": "",
 

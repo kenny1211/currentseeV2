@@ -81,6 +81,14 @@ module.exports = function(app) {
       res.json(wishlistData);
     });
   });
+
+  //newsticker
+  app.get("/api/news", function (req, res) {
+    db.news.create(req.body).then(function (newsData) {
+      res.json(newsData);
+    });
+  });
+
 //   // USER ROUTE------------------------------
 //   app.get(
 //     "/api/user",
