@@ -16,12 +16,12 @@ const upsertBulkInput = (bulkInputData) => {
     }).catch(err => console.log(err));
 }
 
-const bulkInput = (userData, incomeBoolean, savingsBoolean, name) => {
+const bulkInput = (userData, incomeBoolean, savingsBoolean, name, date) => {
   console.log(userData)
-  for (let i = 0; i < 6; i++) {
+  for (let i = 0; i < 7; i++) {
     inputArray.push({
       description: name, //output jquery id
-      date: moment().format("X"), //moment conversion with below function
+      date: moment(date).add(i, "months").format("LL"), //moment conversion with below function
       amount: userData,
       category: name,
       income: incomeBoolean,
@@ -48,12 +48,12 @@ const date= $("#date").val().trim();
 const savings = $("#savings").val().trim();
 
 // repeat above for all inputs
-bulkInput(income, true, false, "Income");
-bulkInput(savings, false, true, "Savings");
-bulkInput(travel, false, false, "Travel");
-bulkInput(utilities, false, false, "Utilities");
-bulkInput(health, false, false, "Health");
-bulkInput(home, false, false, "Home");
+bulkInput(income, true, false, "Income", date);
+bulkInput(savings, false, true, "Savings", date);
+bulkInput(travel, false, false, "Travel", date);
+bulkInput(utilities, false, false, "Utilities", date);
+bulkInput(health, false, false, "Health", date);
+bulkInput(home, false, false, "Home", date);
 }
 
 $(document).on("click", "#introquestSubmit", handleIntroSubmit);
