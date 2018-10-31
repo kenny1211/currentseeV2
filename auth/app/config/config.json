@@ -20,9 +20,9 @@
 
       "password": "",
 
-      "database": "",
+      "database": "currentsee_db",
 
-      "host": "",
+      "host": "127.0.0.1",
 
       "dialect": "mysql"
 
@@ -34,7 +34,7 @@
 
       "password": "",
 
-      "database": "",
+      "database": "currentsee_db",
 
       "host": "127.0.0.1",
 
