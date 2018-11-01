@@ -10,16 +10,16 @@ module.exports = function(sequelize, DataTypes) {
   });
 
   Budget.associate = function(models) {
-<<<<<<< HEAD
-    models.Budget.belongsTo(models.User);
-  }
-=======
+
+  //   models.Budget.belongsTo(models.User);
+  // }
+
     models.Budget.belongsTo(models.User
       // foreignKey: {
       //   allowNull: false;
       // }
     );
   } 
->>>>>>> kenny
+
   return Budget;
 };

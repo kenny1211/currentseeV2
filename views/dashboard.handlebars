@@ -1,3 +1,42 @@
+<style>
+  .holder {
+    background-color: transparent;
+    width: 100%;
+    height: 250px;
+    overflow: hidden;
+    padding: 10px;
+    position: relative;
+    font-family: Helvetica;
+    top: 10px;
+    left: 0px;
+  }
+
+  /* .mask {
+   position: relative;
+   left: 0px;
+   top: 10px;
+   width:300px;
+   height:240px;
+   overflow: hidden;
+ }  */
+  .holder ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    position: relative;
+  }
+
+  .holder ul li {
+    padding: 10px 0px;
+  }
+
+  .holder ul li a {
+    color: darkred;
+    text-decoration: none;
+  }
+</style>
+
+
 <div id="home">
   <div class="background">
     <br>
@@ -6,19 +45,41 @@
     <br>
     <br>
   </div>
+
+  {{!--
   <div class="ticker ml-10 mr-10">
     <div class="slider scrollbar scroll" id="news">
+      <div id="wrapper">
+        <ul id="vertical-ticker">
+        </ul>
+        <p><a href="#" id="ticker-previous">Previous</a> / <a href="#" id="ticker-next">Next</a>
+
+      </div>
+
     </div>
     <br>
     <br>
-  </div>
+  </div> --}}
   <div class="container">
     <div class="row">
       <div class="col-md-4 col-12 monthly">
-        <p>Monthly Savings:</p>
-        <p>Total Savings:</p>
+        <div class="card">
+          <div class="card-header">
+            News Ticker
+          </div>
+          <div class="card-body t_news">
+            <!-- Promo Content 2 goes here -->
+            <fieldset class="fieldset brd">
+              <legend class="fw">Tech News</legend>
+              <div class="holder">
+                <ul id="ticker01">
+                  <li id="news"> </li>
+                </ul>
+              </div>
+            </fieldset>
+          </div>
+        </div>
       </div>
-
       <div class="col-md-8 col-12 categories">
         <div class="card">
           <div class="card-header">Categories
@@ -26,83 +87,44 @@
           <div class="card-body">
             <div class="row">
               <div class="col-md-3 electronics">
-<<<<<<< HEAD
-                <button type="button" class="btn btn-primary" id="electronics">Electronics</button>
-              </div>
-              <div class="col-md-3 electronics-amount">
-                2
-              </div>
-              <div class="col-md-3">
-                <button type="button" class="btn btn-success" id="grocery">Grocery</button>
-              </div>
-              <div class="col-md-3">
-                4
-=======
                 <button type="button" class="btn btn-primary" id="electronics">Income</button>
               </div>
               <div class="col-md-3 electronics-amount">
-                {{#each incomeItem}}
-                {{amount}}
-                {{/each}}
+                {{#each incomeItem}} {{amount}} {{/each}}
               </div>
               <div class="col-md-3">
                 <button type="button" class="btn btn-success" id="grocery">Savings</button>
               </div>
               <div class="col-md-3">
-                
->>>>>>> kenny
+
               </div>
             </div>
             <div class="row">
               <div class="col-md-3">
-<<<<<<< HEAD
-                <button type="button" class="btn btn-warning" id="cat3">Cat 3</button>
-              </div>
-              <div class="col-md-3">
-                2
-              </div>
-              <div class="col-md-3">
-                <button type="button" class="btn btn-danger" id="cat4">Cat 4</button>
-              </div>
-              <div class="col-md-3">
-                4
-=======
                 <button type="button" class="btn btn-warning" id="cat3">Travel</button>
               </div>
               <div class="col-md-3">
-                
+
               </div>
               <div class="col-md-3">
                 <button type="button" class="btn btn-danger" id="cat4">Utilities</button>
               </div>
               <div class="col-md-3">
-                
->>>>>>> kenny
+
               </div>
             </div>
             <div class="row">
               <div class="col-md-3">
-<<<<<<< HEAD
-                <button type="button" class="btn btn-info" id="cat5">Cat 5</button>
-              </div>
-              <div class="col-md-3">
-                2
-=======
                 <button type="button" class="btn btn-info" id="cat5">Home</button>
               </div>
               <div class="col-md-3">
-                
->>>>>>> kenny
+
               </div>
               <div class="col-md-3">
                 <button type="button" class="btn btn-dark" id="cat6">Cat 6</button>
               </div>
               <div class="col-md-3">
-<<<<<<< HEAD
-                4
-=======
-                
->>>>>>> kenny
+
               </div>
             </div>
           </div>
@@ -114,8 +136,8 @@
     <div class="row">
       <div class="col-md-4 modal-buttons">
         <!-- Large modal -->
-        <button type="button" class="btn btn-primary chart-button" data-toggle="modal" data-target="">Show
-          Chart</button>
+        <button type="button" class="btn btn-primary chart-button" data-toggle="modal" data-target="">Show Chart
+        </button>
 
         <div class="modal fade bd-example-modal-lg" id="chart-modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
           aria-hidden="true">
@@ -128,17 +150,14 @@
       </div>
       <div class="col-md-4 modal-buttons">
         <!-- Large modal -->
-        <button type="button" class="btn btn-primary budget-button" data-toggle="modal" data-target="">Show
-          Budget</button>
+        <button type="button" class="btn btn-primary budget-button" data-toggle="modal" data-target="">Show Budget
+        </button>
         <div class="modal fade bd-example-modal-lg" id="budget-modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
           aria-hidden="true">
           <div class="modal-dialog modal-lg">
             <div class="modal-content" id="budget-content">
-<<<<<<< HEAD
-              Budget data goes here
-=======
-                {{#each budgetItem}}
-              <table style= "width: 100%">
+              {{#each budgetItem}}
+              <table style="width: 100%">
                 <tr>
                   <th>Description</th>
                   <th>Date</th>
@@ -147,25 +166,24 @@
                   <th>Income</th>
                 </tr>
                 <tr>
-              
-                <td>{{description}}</td>
-                <td>{{date}}</td>
-                <td>{{category}}</td>
-                <td>{{amount}}</td>
-                <td>{{income}}</td>
-                 {{/each}}
+
+                  <td>{{description}}</td>
+                  <td>{{date}}</td>
+                  <td>{{category}}</td>
+                  <td>{{amount}}</td>
+                  <td>{{income}}</td>
+                  {{/each}}
                 </tr>
               </table>
-             
->>>>>>> kenny
+
             </div>
           </div>
         </div>
       </div>
       <div class="col-md-4 modal-buttons">
         <!-- Large modal -->
-        <button type="button" class="btn btn-primary wish-button" data-toggle="modal" data-target="">Show
-          Wishlist</button>
+        <button type="button" class="btn btn-primary wish-button" data-toggle="modal" data-target="">Show Wishlist
+        </button>
 
         <div class="modal fade bd-example-modal-lg" id="wish-modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
           aria-hidden="true">
@@ -218,17 +236,48 @@
   </div>
 </div>
 
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="js/index1.js"></script>
-    <script src="js/app.js"></script>
-<<<<<<< HEAD
-    <script src="js/walmart.js"></script>
-    <script src="Ticker/js/jquery.totemticker.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
+<script src="js/walmart.js"></script>
+<script src="js/app.js"></script>
 
+<script>
+  (function ($) {
+    jQuery.fn.liScroll = function (settings) {
+      settings = jQuery.extend({
+        travelocity: 0.03
+      }, settings);
+      return this.each(function () {
+        var $strip = jQuery(this);
+        $strip.addClass("newsticker")
+        var stripHeight = 1;
+        $strip.find("li").each(function (i) {
+          stripHeight += jQuery(this, i).outerHeight(true); // thanks to Michael Haszprunar and Fabien Volpi
+        });
+        var $mask = $strip.wrap("<div class='mask'></div>");
+        var $tickercontainer = $strip.parent().wrap("<div class='tickercontainer'></div>");
+        var containerHeight = $strip.parent().parent().height();    //a.k.a. 'mask' width     
+        $strip.height(stripHeight);
+        var totalTravel = stripHeight;
+        var defTiming = totalTravel / settings.travelocity;    // thanks to Scott Waye        
+        function scrollnews(spazio, tempo) {
+          $strip.animate({ top: '-=' + spazio }, tempo, "linear", function () { $strip.css("top", containerHeight); scrollnews(totalTravel, defTiming); });
+        }
+        scrollnews(totalTravel, defTiming);
+        $strip.hover(function () {
+          jQuery(this).stop();
+        },
+          function () {
+            var offset = jQuery(this).offset();
+            var residualSpace = offset.top + stripHeight;
+            var residualTime = residualSpace / settings.travelocity;
+            scrollnews(residualSpace, residualTime);
+          });
+      });
+    };
 
-Collapse 
-
-=======
-    <script src="js/walmart.js"></script>
->>>>>>> kenny
+    $(function () {
+      $("ul#ticker01").liScroll();
+    });
+  })(jQuery)
+</script>

@@ -41,22 +41,22 @@ app.use(passport.session()); //persistent login sessions
 
 // Routes
 require("./routes/apiRoutes")(app, passport);
-<<<<<<< HEAD
-require("./routes/htmlRoutes")(app, passport);
+
+// require("./routes/htmlRoutes")(app, passport);
 
 
-//auth route
+// //auth route
 
 
-var syncOptions = { force: true };
-=======
+// var syncOptions = { force: true };
+
 
 
 //auth route
 
 
 var syncOptions = { };
->>>>>>> kenny
+
 
 // If running a test, set syncOptions.force to true
 // clearing the `testdb`
