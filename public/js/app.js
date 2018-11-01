@@ -54,3 +54,29 @@ $(".chart-button").on("click", function (event) {
   event.preventDefault()
   $('#chart-modal').modal('show');
 })
+
+$(".delete-budget").on("click", function(event) {
+  event.preventDefault();
+
+  const id = $(this).data("id")
+
+  $.ajax(`/api/budget/${id}`, {
+    type: "DELETE"
+  }).then(function(budgetData){
+    console.log(`DELETED POST WITH ${id}`);
+    location.reload();
+  })
+});
+
+$(".delete-wishlist").on("click", function(event) {
+  event.preventDefault();
+
+  const id = $(this).data("id")
+
+  $.ajax(`/api/wishlist/${id}`, {
+    type: "DELETE"
+  }).then(function(budgetData){
+    console.log(`DELETED POST WITH ${id}`);
+    location.reload();
+  })
+});

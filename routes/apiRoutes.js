@@ -126,18 +126,7 @@ module.exports = function (app, passport) {
   });
 
   // RENDER DASHBOARD WITH USER AUTH
-  app.get("/dashboard", isAuthenticated, function (req, res) {
-    db.Budget.findAll({
-      where: {
-        UserId: USER_SESSION.id
-      }
-    }).then(function (data) {
-      var hbsObject = {
-        budgetItem: data
-      };
-      res.render('dashboard', hbsObject);
-    });
-  });
+
 
 
 
@@ -196,12 +185,93 @@ app.post("/api/budget", function (req, res) {
   db.Budget.bulkCreate(income).then(function (budgetData) {
       res.json(budgetData);
     });
-
-
   // res.json("hello");
-
   });
 
+  
+    //WALMART API ROUTES 
+    app.get("/api/wishlist", function(req, res){
+      db.Wishlist.findAll({
+        where: {
+          UserId: USER_SESSION.id
+        }
+      }).then(function(wishlistData) {
+        res.json(wishlistData);
+      });
+    });
+
+    app.post("/api/wishlist", function(req, res){
+      console.log(req.body);
+      let data = req.body;
+
+      wishlistPost = {
+        description: data.product,
+        amount: data.price,
+        date: data.date,
+        income: false,
+        savings: false,
+        category: "Walmart",
+        UserId: USER_SESSION.id
+      }
+      db.Wishlist
+        .create(wishlistPost)
+        .then(function(wishlistData){
+          res.json(wishlistData);
+        });
+    });
+
+    app.delete("/api/budget/:id", function (req, res) {
+      db.Budget.destroy({
+        where: {
+          UserId: USER_SESSION.id,
+          id: req.params.id
+        }
+      }).then(function (budgetData) {
+        res.json(budgetData);
+      })
+    });
+
+    app.delete("/api/wishlist/:id", function(req, res) {
+      db.Wishlist.destroy({
+        where: {
+          UserId: USER_SESSION.id,
+          id: req.params.id
+        }
+      }).then(function (wishlistData) {
+        res.json(wishlistData);
+      })
+    });
+
+    app.get("/dashboard", isAuthenticated, function (req, res) {
+      let budgetData;
+      db.Budget.findAll({
+        where: {
+          UserId: USER_SESSION.id
+        }
+      })
+      .then(function(budgetTableData) {
+        // save returned data into route-scoped 'let' variable created above so we don't lose context
+        budgetData = budgetTableData;
+    
+        // this returns into next .then()
+        return db.Wishlist.findAll({
+          where: {
+            UserId: USER_SESSION.id
+          }
+        })
+      })
+      .then(function (data) {
+    
+        var hbsObject = {
+          budgetItem: budgetData,
+          wishlistItem: data
+        };
+        res.render('dashboard', hbsObject);
+      }).catch(function(err) {
+        console.log(err);
+        res.json(err);
+      });
+    });
   // Render 404 page for any unmatched routes
   app.get("*", function (req, res) {
     res.render("404");

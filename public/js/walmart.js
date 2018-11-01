@@ -100,3 +100,27 @@ $("#search-form").on("submit", function (event) {
   })
 
 });
+
+  $(document).on("click", ".table-button", function(event){ 
+    console.log("in button")
+    event.preventDefault();
+    console.log(event);
+    const product = $(this).attr("data-name");
+    const price = $(this).attr("data-price");
+    const date = moment().format("MM/DD/YYYY");
+
+    const data = {
+      product,
+      price,
+      date
+    }
+
+    console.log(data);
+
+    $.ajax("/api/wishlist", {
+      type: "POST",
+      data: data
+    }).then(function(){
+      window.location.href="/dashboard"
+    });
+  });

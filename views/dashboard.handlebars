@@ -6,17 +6,19 @@
     <br>
     <br>
   </div>
-  <div class="ticker ml-10 mr-10">
-    <div class="slider scrollbar scroll" id="news">
-    </div>
-    <br>
-    <br>
-  </div>
-  <div class="container">
+  <div class="my-3 container">
     <div class="row">
       <div class="col-md-4 col-12 monthly">
-        <p>Monthly Savings:</p>
-        <p>Total Savings:</p>
+          <div class="card-body t_news">
+            <!-- Promo Content 2 goes here -->
+            <fieldset class="fieldset brd">
+              <div class="holder">
+                <ul id="ticker01">
+                  <li id="news"> </li>
+                </ul>
+              </div>
+            </fieldset>
+          </div>
       </div>
 
       <div class="col-md-8 col-12 categories">
@@ -97,15 +99,20 @@
           aria-hidden="true">
           <div class="modal-dialog modal-lg">
             <div class="modal-content" id="budget-content">
-                {{#each budgetItem}}
+                
               <table style= "width: 100%">
+                <thead>
                 <tr>
                   <th>Description</th>
                   <th>Date</th>
                   <th>Category</th>
                   <th>Amount</th>
                   <th>Income</th>
+                  <th>DELETE</th>
                 </tr>
+                </thead>
+                <tbody>
+                  {{#each budgetItem}}
                 <tr>
               
                 <td>{{description}}</td>
@@ -113,8 +120,12 @@
                 <td>{{category}}</td>
                 <td>{{amount}}</td>
                 <td>{{income}}</td>
-                 {{/each}}
+                <td>
+                  <button type="button" class="text-center btn btn-danger delete-budget" data-id="{{id}}">X</button>
+                </td>
                 </tr>
+                       {{/each}}
+                </tbody>
               </table>
              
             </div>
@@ -130,7 +141,33 @@
           aria-hidden="true">
           <div class="modal-dialog modal-lg">
             <div class="modal-content" id="wishlist-data">
-              Wishlist data goes here
+              
+            <table style= "width: 100%">
+                <thead>
+                <tr>
+                  <th>Description</th>
+                  <th>Date</th>
+                  <th>Category</th>
+                  <th>Amount</th>
+                  <th>DELETE</th>
+                </tr>
+                </thead>
+                <tbody>
+                  {{#each wishlistItem}}
+                <tr>
+              
+                <td>{{description}}</td>
+                <td>{{date}}</td>
+                <td>{{category}}</td>
+                <td>{{amount}}</td>
+                <td>
+                  <button type="button" class="text-center btn btn-danger delete-wishlist" data-id="{{id}}">X</button>
+                </td>
+                </tr>
+                       {{/each}}
+                </tbody>
+              </table>
+
             </div>
           </div>
         </div>
@@ -178,6 +215,44 @@
 </div>
 
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="js/index1.js"></script>
     <script src="js/app.js"></script>
     <script src="js/walmart.js"></script>
+    <script>
+  (function ($) {
+    jQuery.fn.liScroll = function (settings) {
+      settings = jQuery.extend({
+        travelocity: 0.03
+      }, settings);
+      return this.each(function () {
+        var $strip = jQuery(this);
+        $strip.addClass("newsticker")
+        var stripHeight = 1;
+        $strip.find("li").each(function (i) {
+          stripHeight += jQuery(this, i).outerHeight(true); // thanks to Michael Haszprunar and Fabien Volpi
+        });
+        var $mask = $strip.wrap("<div class='mask'></div>");
+        var $tickercontainer = $strip.parent().wrap("<div class='tickercontainer'></div>");
+        var containerHeight = $strip.parent().parent().height();    //a.k.a. 'mask' width     
+        $strip.height(stripHeight);
+        var totalTravel = stripHeight;
+        var defTiming = totalTravel / settings.travelocity;    // thanks to Scott Waye        
+        function scrollnews(spazio, tempo) {
+          $strip.animate({ top: '-=' + spazio }, tempo, "linear", function () { $strip.css("top", containerHeight); scrollnews(totalTravel, defTiming); });
+        }
+        scrollnews(totalTravel, defTiming);
+        $strip.hover(function () {
+          jQuery(this).stop();
+        },
+          function () {
+            var offset = jQuery(this).offset();
+            var residualSpace = offset.top + stripHeight;
+            var residualTime = residualSpace / settings.travelocity;
+            scrollnews(residualSpace, residualTime);
+          });
+      });
+    };
+    $(function () {
+      $("ul#ticker01").liScroll();
+    });
+  })(jQuery)
+</script>
