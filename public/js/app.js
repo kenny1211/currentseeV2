@@ -1,3 +1,23 @@
+$.ajax({
+  url: "/api/budget",
+  method: "GET"
+}).then( function(data) {
+  console.log(data);
+
+  let monthArray = data.filter(data.category.includes("November"));
+  console.log(monthArray);
+
+  data.forEach((key) => {
+    let date = key.date;
+    let category = key.category;
+    let amount = key.amount;
+    // console.log("date, type. amount: ", date, type, amount);
+    
+    let monthArray = data.filter(data.category.includes("November"));
+    console.log(monthArray);
+
+  });
+});
 
  var APIKey = "56abaa621bb84cc1a7651b143f56c27d"
  var queryUrl = "https://newsapi.org/v2/top-headlines?sources=fortune&apiKey=" + APIKey;

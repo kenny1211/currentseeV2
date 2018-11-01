@@ -131,15 +131,7 @@ module.exports = function (app, passport) {
 
 
   // CRUD ROUTES ========================
-  app.get("/api/budget", function (req, res) {
-    db.Budget.findAll({
-      where: {
-        id: USER_SESSION.id
-      }
-    }).then(function (budgetData) {
-      res.json(budgetData);
-    });
-  });
+
 // Create a new example
 app.post("/api/budget", function (req, res) {
   let inputArray = [];
@@ -183,11 +175,20 @@ app.post("/api/budget", function (req, res) {
 
 
   db.Budget.bulkCreate(income).then(function (budgetData) {
-      res.json(budgetData);
+      res.json(income);
     });
   // res.json("hello");
   });
 
+  app.get("/api/budget", function (req, res) {
+    db.Budget.findAll({
+      where: {
+        UserId: USER_SESSION.id
+      }
+    }).then(function (budgetData) {
+      res.json(budgetData);
+    });
+  });
   
     //WALMART API ROUTES 
     app.get("/api/wishlist", function(req, res){
