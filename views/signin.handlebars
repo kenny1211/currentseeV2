@@ -5,34 +5,15 @@
   <title>SIGN IN PAGE!</title>
 </head>
 
-<div id="home">
-  <div class="container">
-    <div class="row">
-      <div class="col-8 offset-2">
-        <h1>Welcome to Current$ee!</h1>
-        <h2></h2>
-        <form class="clearfix mb-4" action="signin">
-          <div class="form-group">
-            <label for="email">Email Address</label>
-            <input class="text" name="email" type="text" />
-            <label for="password">Password:</label>
-            <input name="password" type="password" />
-            <input class="btn" type="submit" value="Sign In" />
-          </div>
-        </form>
-        <h3>Examples:</h3>
-        <ul id="example-list" class="list-group">
-          {{#each examples}}
-          <li data-id="{{this.id}}" class="list-group-item">
-            <a href="example/{{this.id}}">{{this.text}}</a>
-            <button class="btn btn-danger float-right delete">ｘ</button>
-          </li>
-          {{/each}}
-        </ul>
-      </div>
-    </div>
-  </div>
-</div>
+<body>
+  <form id="signin" name="signin" method="post" action="signin">
+    <label for="email">Email Address</label>
+    <input class = "text" name="email" type="text" />
+    <label for="password">Password:</label>
+    <input name="password" type="password" />
+    <input class="btn" type="submit" value="Sign In" />  
+  
+  </form>
+</body>
 
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="/js/index.js"></script>
+</html>

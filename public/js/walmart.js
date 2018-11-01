@@ -99,5 +99,9 @@ $("#search-form").on("submit", function (event) {
     //console.log(err);
   })
 
+<<<<<<< HEAD
 });
 
+=======
+});
+>>>>>>> kenny

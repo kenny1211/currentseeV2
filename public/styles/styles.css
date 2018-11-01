@@ -1,6 +1,7 @@
 .background {
   background: linear-gradient(#11998e, #38ef7d);
 }
+<<<<<<< HEAD
 
 button {
   margin-bottom: 5px;
@@ -17,6 +18,19 @@ button {
   /* allow for scrolling */
   overflow-x: auto;
 
+=======
+button {
+  margin-bottom: 5px;
+}
+.modal-buttons {
+  text-align: center;
+}
+.slider {
+  /* line them up horizontally */
+  display: flex;
+  /* allow for scrolling */
+  overflow-x: auto;
+>>>>>>> kenny
   /* make it smooth on iOS */
   -webkit-overflow-scrolling: touch;
 }
@@ -26,6 +40,7 @@ button {
   width: 300px;
   height: 300px;
 }
+<<<<<<< HEAD
 
 .header {
   color: black;
@@ -51,3 +66,28 @@ button {
 	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
 	background-color: rgb(204, 194, 194);
 }*/
+=======
+.header {
+  color: black;
+}
+/*scrollbar::-webkit-scrollbar-track
+{
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    border-radius: 10px;
+    background-color: rgb(15, 15, 15);
+}
+.scrollbar::-webkit-scrollbar
+{
+    width: 12px;
+    background-color: rgb(17, 16, 16);
+}
+.scollbar::-webkit-scrollbar-thumb
+{
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+    background-color: rgb(204, 194, 194);
+}*/
+
+
+
+>>>>>>> kenny

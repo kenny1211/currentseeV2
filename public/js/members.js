@@ -7,4 +7,10 @@ $(document).ready(function() {
     $("#member-photo").attr("src", data.photo);
 
   });
+<<<<<<< HEAD
 });
+=======
+});
+
+
+>>>>>>> kenny

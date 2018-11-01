@@ -44,3 +44,8 @@ module.exports = function(sequelize, DataTypes) {
   
   return User;
 };
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> kenny

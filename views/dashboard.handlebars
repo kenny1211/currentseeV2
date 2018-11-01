@@ -26,6 +26,7 @@
           <div class="card-body">
             <div class="row">
               <div class="col-md-3 electronics">
+<<<<<<< HEAD
                 <button type="button" class="btn btn-primary" id="electronics">Electronics</button>
               </div>
               <div class="col-md-3 electronics-amount">
@@ -36,10 +37,25 @@
               </div>
               <div class="col-md-3">
                 4
+=======
+                <button type="button" class="btn btn-primary" id="electronics">Income</button>
+              </div>
+              <div class="col-md-3 electronics-amount">
+                {{#each incomeItem}}
+                {{amount}}
+                {{/each}}
+              </div>
+              <div class="col-md-3">
+                <button type="button" class="btn btn-success" id="grocery">Savings</button>
+              </div>
+              <div class="col-md-3">
+                
+>>>>>>> kenny
               </div>
             </div>
             <div class="row">
               <div class="col-md-3">
+<<<<<<< HEAD
                 <button type="button" class="btn btn-warning" id="cat3">Cat 3</button>
               </div>
               <div class="col-md-3">
@@ -50,20 +66,43 @@
               </div>
               <div class="col-md-3">
                 4
+=======
+                <button type="button" class="btn btn-warning" id="cat3">Travel</button>
+              </div>
+              <div class="col-md-3">
+                
+              </div>
+              <div class="col-md-3">
+                <button type="button" class="btn btn-danger" id="cat4">Utilities</button>
+              </div>
+              <div class="col-md-3">
+                
+>>>>>>> kenny
               </div>
             </div>
             <div class="row">
               <div class="col-md-3">
+<<<<<<< HEAD
                 <button type="button" class="btn btn-info" id="cat5">Cat 5</button>
               </div>
               <div class="col-md-3">
                 2
+=======
+                <button type="button" class="btn btn-info" id="cat5">Home</button>
+              </div>
+              <div class="col-md-3">
+                
+>>>>>>> kenny
               </div>
               <div class="col-md-3">
                 <button type="button" class="btn btn-dark" id="cat6">Cat 6</button>
               </div>
               <div class="col-md-3">
+<<<<<<< HEAD
                 4
+=======
+                
+>>>>>>> kenny
               </div>
             </div>
           </div>
@@ -95,7 +134,30 @@
           aria-hidden="true">
           <div class="modal-dialog modal-lg">
             <div class="modal-content" id="budget-content">
+<<<<<<< HEAD
               Budget data goes here
+=======
+                {{#each budgetItem}}
+              <table style= "width: 100%">
+                <tr>
+                  <th>Description</th>
+                  <th>Date</th>
+                  <th>Category</th>
+                  <th>Amount</th>
+                  <th>Income</th>
+                </tr>
+                <tr>
+              
+                <td>{{description}}</td>
+                <td>{{date}}</td>
+                <td>{{category}}</td>
+                <td>{{amount}}</td>
+                <td>{{income}}</td>
+                 {{/each}}
+                </tr>
+              </table>
+             
+>>>>>>> kenny
             </div>
           </div>
         </div>
@@ -159,6 +221,7 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="js/index1.js"></script>
     <script src="js/app.js"></script>
+<<<<<<< HEAD
     <script src="js/walmart.js"></script>
     <script src="Ticker/js/jquery.totemticker.js"></script>
 
@@ -166,3 +229,6 @@
 
 Collapse 
 
+=======
+    <script src="js/walmart.js"></script>
+>>>>>>> kenny

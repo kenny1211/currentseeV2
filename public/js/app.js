@@ -47,6 +47,10 @@ $(".wish-button").on("click", function (event) {
 $(".budget-button").on("click", function (event) {
   event.preventDefault()
   $('#budget-modal').modal('show');
+<<<<<<< HEAD
+=======
+  
+>>>>>>> kenny
 })
 
 $(".chart-button").on("click", function (event) {
