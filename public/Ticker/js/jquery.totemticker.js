@@ -4,7 +4,9 @@
 	Released under MIT License
 	--------------------------
 	Structure based on Doug Neiner's jQuery plugin blueprint: http://starter.pixelgraphics.us/
+	
 */
+console.log("i am in ticker")
 (function( $ ){
 	
 	if(!$.omr){

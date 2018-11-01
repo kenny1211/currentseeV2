@@ -17,13 +17,21 @@ module.exports = function (app, passport) {
     res.render("signup");
   });
 
-  app.get("/login", function (req, res) {
+  app.get("/signup", function (req, res) {
     // If the user already has an account send them to the intro-quest page
     if (req.user) {
-      return res.render("intro-quest");
+      return res.render("introquest");
     }
-    res.render("login");
+    res.render("signup");
   });
+
+  //dashboard route
+  app.get("/dashboard", function (req, res) {
+    if (req.user) {
+      //if the user is logged in, return the chart, ticker, wishlist
+      return res.render("dashboard");
+    }
+  })
 
   // Here we've add our isAuthenticated middleware to this route.
   // If a user who is not logged in tries to access this route they will be redirected to the signup page

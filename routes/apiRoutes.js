@@ -146,7 +146,7 @@ module.exports = function (app, passport) {
                 return res.status(422).json(err);
               }
               console.log(req.user);
-              res.json("/members");
+              res.json("/intro-quest");
             });
           }).catch(function (err) {
             console.log(err)
@@ -166,7 +166,7 @@ module.exports = function (app, passport) {
               return res.status(422).json(err);
             }
             console.log(req.user);
-            return res.json("/members");
+            return res.json("/intro-quest");
           });
         }).catch(function (err) {
           console.log(err);
