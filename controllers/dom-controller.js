@@ -71,7 +71,7 @@ module.exports = function (app, passport) {
               }
               console.log(req.user);
               USER_SESSION = req.user;
-              res.json("/introquest");
+              res.redirect("/introquest");
             });
           }).catch(function (err) {
             console.log(err)
@@ -92,7 +92,7 @@ module.exports = function (app, passport) {
             }
             console.log(req.user);
             USER_SESSION = req.user;
-            res.json("/introquest");
+            res.redirect("/introquest");
           });
         }).catch(function (err) {
           console.log(err);
