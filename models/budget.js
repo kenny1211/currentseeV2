@@ -8,5 +8,13 @@ module.exports = function(sequelize, DataTypes) {
     savings: DataTypes.BOOLEAN,
     rollover: DataTypes.BOOLEAN
   });
+
+  Budget.associate = function(models) {
+    models.Budget.belongsTo(models.User
+      // foreignKey: {
+      //   allowNull: false;
+      // }
+    );
+  } 
   return Budget;
 };
