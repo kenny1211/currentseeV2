@@ -1,23 +1,66 @@
+let amountArray = [];
+let categoryArray = [];
+let walmartAmount = 0;
+
 $.ajax({
-  url: "/api/budget",
+  url: "/api/budget/month",
   method: "GET"
 }).then( function(data) {
   console.log(data);
 
-  let monthArray = data.filter(data.category.includes("November"));
-  console.log(monthArray);
 
   data.forEach((key) => {
-    let date = key.date;
-    let category = key.category;
-    let amount = key.amount;
-    // console.log("date, type. amount: ", date, type, amount);
-    
-    let monthArray = data.filter(data.category.includes("November"));
-    console.log(monthArray);
-
+    amountArray.push(key.amount);
+    categoryArray.push(key.category);
   });
 });
+
+$.ajax({
+  url: "/api/wishlist",
+  method: "GET"
+}).then( function(data){
+  console.log(data);
+  
+  data.forEach((key) => {
+    walmartAmount += parseInt(key.amount);
+  });
+    amountArray.push(walmartAmount);
+    categoryArray.push("Walmart");
+// CHART AREA =========================================================
+
+
+
+var chart = new CanvasJS.Chart("chartContainer", {
+  animationEnabled: true,
+  title: {
+    text: "Monthly Values By Category"
+  },
+  data: [{
+    type: "pie",
+    startAngle: 240,
+    yValueFormatString: "\"$\"##",
+    indexLabel: "{label} {y}",
+    dataPoints: [
+      {y: amountArray[0], label: categoryArray[0]},
+      {y: amountArray[1], label: categoryArray[1]},
+      {y: amountArray[2], label: categoryArray[2]},
+      {y: amountArray[3], label: categoryArray[3]},
+      {y: amountArray[4], label: categoryArray[4]},
+      {y: amountArray[5], label: categoryArray[5]},
+      {y: amountArray[6], label: categoryArray[6]}
+    ]
+  }]
+});
+chart.render();
+
+
+
+
+
+// CHART AREA =========================================================
+});
+console.log(amountArray);
+console.log(categoryArray);
 
  var APIKey = "56abaa621bb84cc1a7651b143f56c27d"
  var queryUrl = "https://newsapi.org/v2/top-headlines?sources=fortune&apiKey=" + APIKey;

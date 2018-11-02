@@ -273,6 +273,18 @@ app.post("/api/budget", function (req, res) {
         res.json(err);
       });
     });
+    
+    app.get("/api/budget/month", isAuthenticated, function(req,res) {
+      db.Budget.findAll({
+        where:{
+          UserId: USER_SESSION.id,
+          date: "November 2, 2018"
+        }
+      }).then(function (data){
+        res.json(data);
+      });
+    });
+    
   // Render 404 page for any unmatched routes
   app.get("*", function (req, res) {
     res.render("404");
