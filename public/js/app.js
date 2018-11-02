@@ -148,3 +148,28 @@ $(".delete-wishlist").on("click", function(event) {
     location.reload();
   })
 });
+
+const handleFormSubmit = (event) => {
+  event.preventDefault();
+  const description = $("#name").val().trim();
+  const amount = $("#amount").val().trim();
+  const formDate = moment().format("LL");
+  const category = $("#category").val().trim();
+
+  const data = {
+    description,
+    amount,
+    formDate,
+    category,
+  }
+  console.log(data);
+  $.post("/api/singleupdate", data)
+  .then(function(data) {
+    console.log(data);
+    window.location.href="/dashboard"
+  }).catch(err => console.log(err));
+}
+
+
+$(document).on("click", "#budget-form", handleFormSubmit); 
+

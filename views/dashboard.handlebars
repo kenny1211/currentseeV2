@@ -12,34 +12,24 @@
     <br>
     <br>
   </div>
-  
   <div class="my-3 container">
     <div class="row">
-      <div class="col-md-4 col-12 monthly">
-          <div class="card-body t_news">
-            <!-- Promo Content 2 goes here -->
-            <fieldset class="fieldset brd">
-              <div class="holder">
-                <ul id="ticker01">
-                  <li id="news"> </li>
-                </ul>
-              </div>
-            </fieldset>
-          </div>
-      </div>
-
-      <div class="col-md-8 col-12 categories">
-        <div class="card">
-          <div class="card-header">Categories
-          </div>
-          <div class="card-body">
-
-<div id="chartContainer" style="height: 370px; width: 100%;"></div>
-
-          </div>
+      <div class="col-md-6 col-12 monthly">
+        <div class="card-body t_news">
+          <!-- Promo Content 2 goes here -->
+          <fieldset class="fieldset brd">
+            <div class="holder">
+              <ul id="ticker01">
+                <li id="news"> </li>
+              </ul>
+            </div>
+          </fieldset>
         </div>
       </div>
-    </div>
+      <div class="col-md-6 col-12 budget-form">
+
+        <div id="chartContainer" style="height: 370px; width: 100%;"></div>
+      </div>
     <br>
     <br>
     <div class="row">
@@ -52,35 +42,64 @@
           aria-hidden="true">
           <div class="modal-dialog modal-lg">
             <div class="modal-content" id="chart-content">
-              Chart data goes here
+
+              <div class="card form-card">
+                <div class="card-header bg-light card-title">
+                  Input your income or expenses
+                </div>
+                <form>
+                  <div class="form">
+                    <div class="form-group">
+                      <label for="description-input">Description</label>
+                      <input class="form-control" id="name" placeholder="Description" type="text">
+                    </div>
+                    <div class="form-group">
+                      <label for="role-input">Amount</label>
+                      <input class="form-control" id="amount" placeholder="$$$" type="text">
+                    </div>
+                    <div class="form-group">
+                      <label for="date">Date</label>
+                      <input class="form-control" id="form-date" placeholder="MM/DD/YYYY" type="text">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="date">Category</label>
+                    <input class="form-control" id="category" placeholder="Income" type="text">
+                  </div>
+                  <button class="btn btn-primary float-right" id="budget-form">Submit</button>
+                </form>
+              </div>
             </div>
           </div>
+
+
         </div>
       </div>
-      <div class="col-md-4 modal-buttons">
-        <!-- Large modal -->
-        <button type="button" class="btn btn-primary budget-button" data-toggle="modal" data-target="">Show
-          Budget</button>
-        <div class="modal fade bd-example-modal-lg" id="budget-modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
-          aria-hidden="true">
-          <div class="modal-dialog modal-lg">
-            <div class="modal-content" id="budget-content">
-                
-              <table style= "width: 100%">
-                <thead>
-                <tr>
-                  <th>Description</th>
-                  <th>Date</th>
-                  <th>Category</th>
-                  <th>Amount</th>
-                  <th>Income</th>
-                  <th>DELETE</th>
-                </tr>
-                </thead>
-                <tbody>
-                  {{#each budgetItem}}
-                <tr>
-              
+    </div>
+  <div class="col-md-4 modal-buttons">
+    <!-- Large modal -->
+    <button type="button" class="btn btn-primary budget-button" data-toggle="modal" data-target="">Show
+      Budget</button>
+    <div class="modal fade bd-example-modal-lg" id="budget-modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content" id="budget-content">
+
+          <table style="width: 100%">
+            <thead>
+              <tr>
+                <th>Description</th>
+                <th>Date</th>
+                <th>Category</th>
+                <th>Amount</th>
+                <th>Income</th>
+                <th>DELETE</th>
+              </tr>
+            </thead>
+            <tbody>
+              {{#each budgetItem}}
+              <tr>
+
                 <td>{{description}}</td>
                 <td>{{date}}</td>
                 <td>{{category}}</td>
@@ -89,39 +108,39 @@
                 <td>
                   <button type="button" class="text-center btn btn-danger delete-budget" data-id="{{id}}">X</button>
                 </td>
-                </tr>
-                       {{/each}}
-                </tbody>
-              </table>
-             
-            </div>
-          </div>
+              </tr>
+              {{/each}}
+            </tbody>
+          </table>
+
         </div>
       </div>
-      <div class="col-md-4 modal-buttons">
-        <!-- Large modal -->
-        <button type="button" class="btn btn-primary wish-button" data-toggle="modal" data-target="">Show
-          Wishlist</button>
+    </div>
+  </div>
+  <div class="col-md-4 modal-buttons">
+    <!-- Large modal -->
+    <button type="button" class="btn btn-primary wish-button" data-toggle="modal" data-target="">Show
+      Wishlist</button>
 
-        <div class="modal fade bd-example-modal-lg" id="wish-modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
-          aria-hidden="true">
-          <div class="modal-dialog modal-lg">
-            <div class="modal-content" id="wishlist-data">
-              
-            <table style= "width: 100%">
-                <thead>
-                <tr>
-                  <th>Description</th>
-                  <th>Date</th>
-                  <th>Category</th>
-                  <th>Amount</th>
-                  <th>DELETE</th>
-                </tr>
-                </thead>
-                <tbody>
-                  {{#each wishlistItem}}
-                <tr>
-              
+    <div class="modal fade bd-example-modal-lg" id="wish-modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content" id="wishlist-data">
+
+          <table style="width: 100%">
+            <thead>
+              <tr>
+                <th>Description</th>
+                <th>Date</th>
+                <th>Category</th>
+                <th>Amount</th>
+                <th>DELETE</th>
+              </tr>
+            </thead>
+            <tbody>
+              {{#each wishlistItem}}
+              <tr>
+
                 <td>{{description}}</td>
                 <td>{{date}}</td>
                 <td>{{category}}</td>
@@ -129,49 +148,47 @@
                 <td>
                   <button type="button" class="text-center btn btn-danger delete-wishlist" data-id="{{id}}">X</button>
                 </td>
-                </tr>
-                       {{/each}}
-                </tbody>
-              </table>
+              </tr>
+              {{/each}}
+            </tbody>
+          </table>
 
-            </div>
-          </div>
         </div>
       </div>
     </div>
-    <div id="menu2"><br>
-      <div class="card-body">
-        <div id='walmart-table'>
-        </div>
-        <div class="card form-card">
-          <div class="card-header bg-light card-title">
-            Search for products on Walmart.com
+  </div>
+</div>
+<div id="menu2"><br>
+  <div class="card-body">
+    <div id='walmart-table'>
+    </div>
+    <div class="card form-card">
+      <div class="card-header bg-light card-title">
+        Search for products on Walmart.com
+      </div>
+      <form id="search-form">
+        <div class="form">
+          <div class="form-group">
+            <label for="search-input">Description</label>
+            <input class="form-control" id="search-term" placeholder="Search for Products" type="text">
           </div>
-          <form id="search-form">
-            <div class="form">
-              <div class="form-group">
-                <label for="search-input">Description</label>
-                <input class="form-control" id="search-term" placeholder="Search for Products" type="text">
-              </div>
+        </div>
+        <button class="btn btn-primary float-right" id="search">Submit</button>
+      </form>
+      <div class="modal" id="walmart-modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Walmart Results</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
             </div>
-            <button class="btn btn-primary float-right" id="search">Submit</button>
-          </form>
-          <div class="modal" id="walmart-modal" tabindex="-1" role="dialog">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title">Walmart Results</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body" id="product-results">
-                  <p>Awaiting Results...</p>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                </div>
-              </div>
+            <div class="modal-body" id="product-results">
+              <p>Awaiting Results...</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
             </div>
           </div>
         </div>
@@ -179,13 +196,15 @@
     </div>
   </div>
 </div>
-    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
-    <script src="js/app.js"></script>
-    <script src="js/walmart.js"></script>
-    <script>
+</div>
+</div>
+
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
+<script src="js/app.js"></script>
+<script src="js/walmart.js"></script>
+<script>
   (function ($) {
     jQuery.fn.liScroll = function (settings) {
       settings = jQuery.extend({

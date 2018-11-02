@@ -284,6 +284,36 @@ app.post("/api/budget", function (req, res) {
         res.json(data);
       });
     });
+
+    app.get("/api/singleupdate", function (req, res) {
+      db.Budget.findAll({
+        where: {
+          UserId: USER_SESSION.id
+        }
+      }).then(function (budgetData) {
+        res.json(budgetData);
+      });
+    });
+  
+    app.post("/api/singleupdate", function (req, res) {
+      console.log(req.body);
+      let data = req.body;
+  
+      singleUpdate = {
+        description: data.description,
+        amount: data.amount,
+        date: data.date,
+        income: false,
+        savings: false,
+        category: data.category,
+        UserId: USER_SESSION.id
+      }
+      db.Budget
+        .create(singleUpdate)
+        .then(function (budgetData) {
+          res.json(budgetData);
+        });
+    });
     
   // Render 404 page for any unmatched routes
   app.get("*", function (req, res) {

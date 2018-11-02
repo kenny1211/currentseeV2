@@ -53,7 +53,7 @@ const printProducts = (productsArray) => {
     addButton
       .addClass("btn btn-block btn-outline-dark")
       .addClass("table-button")
-      .text("Add to Budget")
+      .text("Add to Wishlist")
       .appendTo(productBody)
       .attr("data-name", productsArray.items[i].name)
       .attr("data-price", productsArray.items[i].salePrice)
