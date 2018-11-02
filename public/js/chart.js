@@ -1,77 +1,60 @@
 window.onload = function () {
-  var chart = new CanvasJS.Chart("chartContainer", {            
-    title:{
-      text: "Expense Overview"              
-    },
+  // Load the Visualization API and the corechart package.
+  google.charts.load('current', { 'packages': ['corechart'] });
 
-    data: [  //array of dataSeries     
-    { //dataSeries - expenses
-/*** Change type "column" to "bar", "area", "line" or "pie"***/        
-     type: "column",
-     name: "income",
-     showInLegend: true,
-     dataPoints: [
-     { label: "July", y: 6 },
-     { label: "August", y: 12 },
-     { label: "September", y: 0 },                                    
-     { label: "October", y: 2 },
-     { label: "November", y: 3 },
-     { label: "December", y: 5 }
-     ]
-   },
+  // Set a callback to run when the Google Visualization API is loaded.
+  google.charts.setOnLoadCallback(drawChart);
 
-   { //dataSeries - income
+  // Callback that creates and populates a data table,
+  // instantiates the pie chart, passes in the data and
+  // draws it.
+  function drawChart() {
 
-    type: "column",
-    name: "expenses", 
-    showInLegend: true,               
-    dataPoints: [
-    { label: "November", y: 5 },
-    { label: "December", y: 3 },
-    { label: "January", y: 8 },
-    { label: "February", y: 4 },                                    
-    { label: "March", y: 7 },
-    { label: "April", y: 2 }
-    ]
+    // Create the data table.
+    var data = new google.visualization.DataTable();
+    data.addColumn('string', 'Income');
+    data.addColumn('number', 'Expenses');
+    data.addRows([
+      ['Income', 3],
+      ['Savings', 1],
+      ['Utilities', 1],
+      ['Groceries', 1],
+      ['Housing', 2]
+    ]);
+
+    // Set chart options
+    var options = {
+      'title': 'Overall Budget',
+      'width': 400,
+      'height': 300
+    };
+
+    // Instantiate and draw our chart, passing in some options.
+    var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+    chart.draw(data, options);
   }
-  ],
-/** Set axisY properties here*/
-  axisY:{
-    prefix: "$"
-  }    
-});
 
-chart.render();
-}
+  $("#submit").on("click", function () {
+    event.preventDefault();
+    var dscrpt = $("#name").val().trim();
+    var amnt = $("#amount").val().trim();
+    var day = $("#date").val().trim();
+    var inc_exp = $("[name=inc_exp]:checked").val();
 
-let data = {
-dscrpt: "",
-amnt: 0,
-month: 0,
-day: 0,
-year: 0000,
-inc_exp: "income",
+
+    data.dscrpt = dscrpt;
+    data.amnt = amnt;
+    data.day = day;
+    data.inc_exp = inc_exp
+
+    console.log(data);
+
+    //insert ajax post method to get from budget database
+    $.get("api/budget", data, function (req, res) {
+      console.log("posted into api/chart")
+      res.render(chart);
+    })
+
+
+  })
 };
-
-$("#submit").on("click", function () {
-event.preventDefault();
-var dscrpt = $("#name").val().trim();
-var amnt = $("#amount").val().trim();
-var day = $("#date").val().trim();
-var inc_exp = $("[name=inc_exp]:checked").val();
-
-
-data.dscrpt = dscrpt;
-data.amnt = amnt;
-data.day = day;
-data.inc_exp = inc_exp
-
-console.log(data);
-
-//insert ajax post method to push to database
-$.post("api/chart", data, function(req, res) {
-console.log("posted into api/chart")
-})
-
-
-});
