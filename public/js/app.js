@@ -2,6 +2,11 @@ let amountArray = [];
 let categoryArray = [];
 let walmartAmount = 0;
 
+$.get("/api/user_data").then(function(data) {
+  console.log(data);
+  $(".member-name").text(data.email);
+});
+
 $.ajax({
   url: "/api/budget/month",
   method: "GET"
